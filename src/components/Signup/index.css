@@ -1,0 +1,97 @@
+.signup-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.signup-left, .signup-right {
+  flex: 1;
+  padding: 50px;
+}
+
+.signup-left {
+  background: #1c1e21;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-left h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.signup-left p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.signup-people {
+  display: flex;
+  align-items: center;
+}
+
+.signup-people img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.signup-right {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.signup-right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-right h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.signup-right p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.signup-right input[type="text"],
+.signup-right input[type="email"],
+.signup-right input[type="password"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.signup-right .checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.signup-right .checkbox-container input {
+  margin-right: 10px;
+}
+
+.signup-right button {
+  padding: 10px 20px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-right button:hover {
+  background: #2563eb;
+}
