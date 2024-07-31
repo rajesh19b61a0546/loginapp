@@ -14,3 +14,28 @@
 .dashboard-container p {
   margin: 10px 0;
 }
+
+
+@media (max-width: 1024px) {
+ 
+  .dashboard-container {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .dashboard-container {
+    max-width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .dashboard-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-container p {
+    font-size: 1rem;
+  }
+}

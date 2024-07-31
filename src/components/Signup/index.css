@@ -95,3 +95,41 @@
 .signup-right button:hover {
   background: #2563eb;
 }
+
+
+@media (max-width: 1024px) {
+  
+  .signup-container {
+    flex-direction: column;
+  }
+
+  .signup-left, .signup-right {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .signup-container {
+    flex-direction: column;
+  }
+
+  .signup-left, .signup-right {
+    padding: 20px;
+  }
+
+  .signup-left h2, .signup-right h2 {
+    font-size: 1.5rem;
+  }
+
+  .signup-left p, .signup-right p {
+    font-size: 1rem;
+  }
+
+  .signup-right input[type="text"],
+  .signup-right input[type="email"],
+  .signup-right input[type="password"],
+  .signup-right button {
+    padding: 8px;
+  }
+}

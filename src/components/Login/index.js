@@ -1,32 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './index.css';
 
-const Home = () => {
+const Login = () => {
+  const [formData, setFormData] = useState({
+    user_email: '',
+    user_password: ''
+  });
+
   const navigate = useNavigate();
-  let user = {};
 
-  try {
-    user = JSON.parse(localStorage.getItem('user')) || {};
-  } catch (error) {
-    console.error('Error parsing user data from local storage:', error);
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/login');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('https://syoft.dev/Api/userlogin/api/userlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+      console.log('Login Response:', result);
+
+      if (result.success) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        navigate('/home');
+      } else {
+        console.error('Login failed:', result.message || 'Unknown error');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
   };
 
   return (
-    <div className="dashboard-container">
-      <h1>Welcome, {user.user_firstname || 'Guest'}</h1>
-      <p>Email: {user.user_email || 'N/A'}</p>
-      <p>Phone: {user.user_phone || 'N/A'}</p>
-      <p>City: {user.user_city || 'N/A'}</p>
-      <p>Zipcode: {user.user_zipcode || 'N/A'}</p>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="form-container">
+      <h2>Log In</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="user_email"
+          placeholder="Email"
+          value={formData.user_email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="user_password"
+          placeholder="Password"
+          value={formData.user_password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Log In</button>
+      </form>
     </div>
   );
 };
 
-export default Home;
+export default Login;

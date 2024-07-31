@@ -39,33 +39,14 @@ const Signup = () => {
       console.log('Sign-up Response:', signupResult);
 
       if (signupResult.success) {
-        
-        const loginResponse = await fetch('https://syoft.dev/Api/userlogin/api/userlogin', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            user_email: formData.user_email,
-            user_password: formData.user_password
-          }),
-        });
-
-        const loginResult = await loginResponse.json();
-        console.log('Login Response:', loginResult);
-
-        if (loginResult.success) {
-          localStorage.setItem('user', JSON.stringify(loginResult.user));
-          navigate('/home'); 
-        } else {
-          console.error('Login failed:', loginResult.message || 'Unknown error');
-          
-        }
+        console.log('Sign-up successful, navigating to login');
+        localStorage.setItem('user', JSON.stringify(formData));
+        navigate('/login');
       } else {
         console.error('Sign-up failed:', signupResult.message || 'Unknown error');
       }
     } catch (error) {
-      console.error('Error during sign-up or login:', error);
+      console.error('Error during sign-up:', error);
     }
   };
 
